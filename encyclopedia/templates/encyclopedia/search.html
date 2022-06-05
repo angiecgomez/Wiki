@@ -1,0 +1,18 @@
+{% extends 'encyclopedia/layout.html' %}
+
+{% block title %}
+    Search Page - Encyclopedia
+{% endblock %}
+
+{% block body %}
+    <h1>Search results for: <label style="color: rgb(19, 123, 250);">{{ query | safe}}</label></h1> 
+    {% if exists %}
+        <ul>
+            {% for entry in findings %}
+                <li><a href="{% url 'entry_page' entry %}">{{ entry }}</a></li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <h2 style="color: rgb(19, 123, 250);">No matches.</h2>
+    {% endif %}
+{% endblock %}

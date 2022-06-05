@@ -1,0 +1,16 @@
+{% extends 'encyclopedia/layout.html' %}
+
+{% block title %}
+    Edit entry - Encyclopedia
+{% endblock %}
+
+{% block body %}
+    <h1>Edit entry for: {{ title | safe }}</h1> 
+        <h3 style="color: rgb(19, 123, 250); margin-bottom: 40px;" >All fields are required.</h3>
+        <form action="{% url 'update_page' %}" method="POST">
+            {% csrf_token %}
+            <p><input id="title" type="text" name="title" value="{{ title | safe }}" required></p>
+            <p class="textarea"><textarea id="content" type="text" name="content" required>{{ content | safe }}</textarea></p>
+            <div id="save"><button type="submit">Save</button></div>  
+        </form>
+{% endblock %}
